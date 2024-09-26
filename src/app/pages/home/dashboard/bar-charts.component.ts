@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import {  } from 'highcharts-angular'
 
 @Component({
   selector: 'app-bar-charts',
   standalone: true,
-  imports: [],
+  imports: [ ],
   template: `
     <p>
       bar-charts works!

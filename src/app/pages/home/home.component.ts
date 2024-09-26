@@ -8,7 +8,7 @@ import { DashboardService } from '../../service/dashboard.service';
   imports: [WidgetComponent],
   template: `
   <div class="dashboard-widget">
-    @for (w of store.widget(); track w.id) {
+    @for (w of store.widget(); track $index) {
       <app-widget [data]="w" />
     }
   </div>
@@ -18,6 +18,7 @@ import { DashboardService } from '../../service/dashboard.service';
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 14px;
+      margin: 20px;
     }
   `,
   providers: [DashboardService],

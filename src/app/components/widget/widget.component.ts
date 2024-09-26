@@ -7,7 +7,7 @@ import { NgComponentOutlet } from '@angular/common';
   imports: [NgComponentOutlet],
   template: `
     <div class="container box-shadow">
-      <h1>{{ data().title }}</h1>
+      <h3>{{ data().title }}</h3>
       <ng-container [ngComponentOutlet]="data().content" />
     </div>
   `,
@@ -19,9 +19,10 @@ import { NgComponentOutlet } from '@angular/common';
     .box-shadow{
       box-shadow: 0px 4px 8px  rgb(0, 0, 0, 0.2);
     }
-    .container h1{
+    .container h3{
       margin: 0px;
       color: blue;
+      
     }
     .container{
       position: relative;
@@ -31,8 +32,6 @@ import { NgComponentOutlet } from '@angular/common';
       border-radius: inherit;
       box-sizing: border-box;
       overflow: hidden;
-      margin: 10px;
-
     }
   `
 })

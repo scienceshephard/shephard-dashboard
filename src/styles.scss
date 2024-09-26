@@ -32,11 +32,10 @@ body {
     height: calc(100vh - 65px);
 }
 #mat-toolbar{
-  color: red;
   position: relative;
   z-index: 3;
   border-bottom: 3px solid #eddbdbc6;
 }
 .mat-sidenav, .mat-sidenav-content{
-  transition: all 500ms;
+  transition: all 400ms;
 }

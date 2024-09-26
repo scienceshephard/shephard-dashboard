@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-list-charts',
   standalone: true,
   imports: [],
   template: `
     <p>
-      dashboard works!
-      
+      list-charts works!
     </p>
   `,
   styles: ``
 })
-export class DashboardComponent {
+export class ListChartsComponent {
 
 }
