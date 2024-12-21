@@ -22,7 +22,7 @@ import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.compone
       </button>
     </div>
     <div class="header-content" >
-      <h1>Shephard Dashboard</h1>
+      <h1>{{header}}</h1>
       <div class="search-box" [style.backgroundColor]="isDarkMode? '#444559': '' ">
         <button mat-icon-button><mat-icon fontIcon="search" /></button>
         <input type="search" placeholder="Search here..." id="search" >
@@ -77,6 +77,9 @@ import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.compone
   `
 })
 export class NavbarComponent {
+
+  header:String = "Shephard Dashboard";
+  
   collapsed= signal(false);
   sidenavWidth= computed(()=> this.collapsed()? '65px': '200px')
   theme= signal<string>('light_mode');
