@@ -8,7 +8,7 @@ import { DashboardService } from '../../service/dashboard.service';
   imports: [WidgetComponent],
   template: `
   <div class="dashboard-widget">
-    @for (w of store.widget(); track $index) {
+    @for (w of store.widgets(); track $index) {
       <app-widget [data]="w" />
     }
   </div>

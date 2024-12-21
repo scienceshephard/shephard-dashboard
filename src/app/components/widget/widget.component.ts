@@ -1,14 +1,23 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { Widget } from '../../model/dashboard'
 import { NgComponentOutlet } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { WidgetOptionsComponent } from "./widget-options/widget-options.component";
 @Component({
   selector: 'app-widget',
   standalone: true,
-  imports: [NgComponentOutlet],
+  imports: [NgComponentOutlet, MatButtonModule, MatIcon, WidgetOptionsComponent],
   template: `
     <div class="container box-shadow">
-      <h3>{{ data().title }}</h3>
+      <div class="header-container">
+        <h3>{{ data().title }}</h3>
+        <button mat-icon-button class="settings-button" (click)="showOptions.set(true)"> <mat-icon>settings</mat-icon> </button>
+      </div>
       <ng-container [ngComponentOutlet]="data().content" />
+      @if(showOptions()){
+        <app-widget-options [(showOptions)]="showOptions" [data]="data()" />
+      }
     </div>
   `,
   styles: `
@@ -22,7 +31,6 @@ import { NgComponentOutlet } from '@angular/common';
     .container h3{
       margin: 0px;
       color: blue;
-      
     }
     .container{
       position: relative;
@@ -33,8 +41,20 @@ import { NgComponentOutlet } from '@angular/common';
       box-sizing: border-box;
       overflow: hidden;
     }
+    .header-container{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .settings-button{
+      position: absolute;
+      top: 0;
+      right: 0;
+     display:flex;
+    }
   `
 })
 export class WidgetComponent {
   data = input.required<Widget>();
+  showOptions= signal(false)
 }
