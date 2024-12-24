@@ -9,9 +9,8 @@ import { SalesComponent } from './pages/sales/sales.component';
 import { ProductComponent } from './pages/product/product.component';
 
 export const routes: Routes = [
-    // { path: "", pathMatch: 'full', redirectTo: "dashboard"},
-    // { path: "dashboard", component: HomeComponent },
-    {path: '', component: HomeComponent},
+    { path: "", pathMatch: 'full', redirectTo: "dashboard"},
+    { path: "dashboard", component: HomeComponent },
     { path: "account", component: AccountComponent },
     { path: "settings", component: SettingsComponent },
     { path: "chat", component: ChatComponent },
