@@ -6,9 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   standalone: true,
   imports: [NavbarComponent],
   template: `
-  <div class="wrapper container bg-red-700">
     <app-navbar />
-  </div>
   `,
   styles: [],
 })

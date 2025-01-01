@@ -15,15 +15,19 @@ color: (
 ));
 
 
-body.dark-mode{
+html, body.dark-mode{
   @include mat.all-component-colors($dark-theme);
 }
 .mat-sidenav{
-  border-right: 2px solid #dadae1;
+  border-right: 1px solid #dadae1;
 }
 
-html, body, .wrapper { height: 100vh; }
-body { 
+html, body, app-root, app-navbar {
+  display: block; 
+  height: 100vh;
+}
+
+html, body { 
   @include mat.all-component-themes($light-theme);
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
 }

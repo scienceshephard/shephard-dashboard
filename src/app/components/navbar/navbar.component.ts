@@ -1,16 +1,38 @@
-import { ChangeDetectorRef, Component, computed, ElementRef, HostListener, OnInit, signal, ViewChild, viewChild } from '@angular/core';
+import { Component, computed, ElementRef, HostListener, OnInit, signal, ViewChild, HostBinding, Renderer2, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatButtonModule } from '@angular/material/button'
 import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
 import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.component';
-// import {  } from '@angular/material/'
+import { trigger, state, style, animate, transition } from '@angular/animations'
+
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [ MatIconModule,  MatSidenav, MatSidenavContainer, MatSidenavContent, MatButtonModule, MatToolbarModule, RouterOutlet, CustomSidenavComponent],
+  animations: [ 
+    trigger('openClose', [
+      state('open', style({
+        height: '20px',
+        opacity: 1,
+        backgroundColor: 'yellow',})),
+      state('closed', style({
+        height: '10px',
+        opacity: 0.8,
+        backgroundColor: 'blue',
+      })),
+      // transition('* => closed', [animate('1s')]),
+      // transition('* => open', [animate('0.5s')])
+      // transition('open <=> closed', [animate('1s')])
+    ]),
+    trigger('myInsertRemoveTrigger',
+      [state('c', style({
+        backgroundColor: 'red'
+      })), transition('* =>c', [animate('2s')])]
+    )
+  ],
   template: `
     <mat-toolbar class="toolbar"  #toolbar id="mat-toolbar">
     <div class="header">
@@ -23,14 +45,14 @@ import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.compone
     </div>
     <div class="header-content" >
       <h1>{{header}}</h1>
-      <div class="search-box" [class.SearchBtnExpands] = "isFocused" [style.backgroundColor]="isDarkMode? '#444559': '' ">
-        <button mat-icon-button class="toggleBTN" (click)="toggleInput()"><mat-icon fontIcon="search" /></button>
-        @if (showSearchInput) {
-          <input type="text" #textInput placeholder="Search here..." class="search">
+      <div class="search-box"  [style.backgroundColor]="isDarkMode? '#444559': '' ">
+        <button mat-icon-button class="toggleBTN" (click)="toggleInput()"  ><mat-icon fontIcon="search" /></button>
+        @if (showInput()) {
+          <input #inputText type="text"  placeholder="Search here..." class="search">
         }
       </div>
     </div>
-    </mat-toolbar>
+  </mat-toolbar>
 
     <mat-sidenav-container #sidenav class="side-navbar"  hasBackdrop="false">
       <mat-sidenav opened mode="side" [style.width]="sidenavWidth()"> <app-custom-sidenav [collapsed]="collapsed()" /> </mat-sidenav>
@@ -58,13 +80,16 @@ import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.compone
     .header-content h1{
       font-weight: 500;
     }
+    .side-navbar{
+      height:100vh;
+    }
     .search-box{
       display: flex;
       border-radius: 20px;
       background-color: #e7e4bf;
       margin-left: auto;
-      width: calc(80% - 200px);
-      // width: fit-content;
+      width: fit-content;
+      // transition: width 2s;
     }
     .search{
       outline: none;
@@ -79,7 +104,8 @@ import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.compone
     }
     .SearchBtnExpands{
       width:50%;
-     background-color: red;
+      background-color:#e7e4bf00;
+      transform: all 400ms;
     }
     .toggleBtn {
       padding: 10px 20px;
@@ -90,38 +116,22 @@ import { CustomSidenavComponent } from '../custom-sidenav/custom-sidenav.compone
       border-radius: 4px;
       cursor: pointer;
     }
-
+    .showSearch{
+      visibility: visible;
+      opacity: 1;
+    }
     .toggleBtn:hover {
       background-color: #0056b3;
     }
   `
 })
 export class NavbarComponent implements OnInit{
-
+  constructor(private renderer: Renderer2){
+  }
   ngOnInit(): void {
-    this.updateHeaderText(window.innerWidth);
+    this.updateHeaderText(window.innerWidth);//Changes the header text when the width of the device is that of a phone
   }
-
   header:String = "Shephard Dashboard";
-  isFocused:boolean = false;
-  showSearchInput = false;
-  @ViewChild('textInput', {static:false}) textInput!:ElementRef<HTMLInputElement>;
-  toggleInput(){
-    this.showSearchInput = true;
-    setTimeout(() =>{
-      if(this.textInput)
-        this.textInput.nativeElement.focus();
-    }, 0);
-  }
-
-  @HostListener('document:click', ['$event'])
-  onclickOutside(event: MouseEvent){
-    const target = event.target as HTMLElement;
-    if(!this.textInput?.nativeElement.contains(target) && !target.classList.contains('toggleBtn')){
-      this.showSearchInput = false; 
-    }
-  }
-
   @HostListener('window:resize', ['$event'])
   onResize(event: Event){
     const width = (event.target as Window).innerWidth;
@@ -134,17 +144,6 @@ export class NavbarComponent implements OnInit{
       this.header = "SD";
     }
   }
-
-  onFocused(){
-    this.isFocused = true;
-    console.log("isFocused: "+this.isFocused);
-    
-  }
-  onBlur(){
-    this.isFocused = false;
-    console.log("isFocused: "+this.isFocused);
-  }
-
   collapsed= signal(false);
   sidenavWidth= computed(()=> this.collapsed()? '65px': '200px')
   theme= signal<string>('light_mode');
@@ -160,6 +159,26 @@ export class NavbarComponent implements OnInit{
         this.theme.set('light_mode')
         this.body.classList.remove('dark-mode');
       }
-  }
+    }
+
+
+    isOpen = true;
+    toggler(){
+      this.isOpen = !this.isOpen;
+    }
+    
+    showInput= signal(false);
+    @ViewChild('inputText', {static: false}) inputText!: ElementRef;
   
-}
+    toggleInput(){
+      this.showInput.set(!this.showInput());
+      if(this.showInput() && this.inputText){
+        this.renderer.setStyle(this.inputText, 'width', '200px')
+        this.inputText.nativeElement.focus();
+      }
+    }
+    onBlur(){
+      this.showInput.set(false);
+      this.renderer.setStyle(this.inputText.nativeElement, 'width', 'fit-content');
+    }
+  }
