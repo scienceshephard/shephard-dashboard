@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, HostListener, OnInit, signal, ViewChild, HostBinding, Renderer2, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, computed, ElementRef, HostListener, OnInit, signal, ViewChild, HostBinding, Renderer2, AfterViewInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatButtonModule } from '@angular/material/button'
@@ -46,9 +46,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     <div class="header-content" >
       <h1>{{header}}</h1>
       <div class="search-box"  [style.backgroundColor]="isDarkMode? '#444559': '' ">
-        <button mat-icon-button class="toggleBTN" (click)="toggleInput()"  ><mat-icon fontIcon="search" /></button>
+        <button mat-icon-button class="toggleBTN" (click)="toggleInput()" ><mat-icon fontIcon="search" /></button>
         @if (showInput()) {
-          <input #inputText type="text"  placeholder="Search here..." class="search">
+          <input #inputText type="text"  placeholder="Search here..." class="search" (blur)="onBlur()">
         }
       </div>
     </div>
@@ -126,7 +126,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   `
 })
 export class NavbarComponent implements OnInit{
-  constructor(private renderer: Renderer2){
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef){
   }
   ngOnInit(): void {
     this.updateHeaderText(window.innerWidth);//Changes the header text when the width of the device is that of a phone
@@ -172,8 +172,8 @@ export class NavbarComponent implements OnInit{
   
     toggleInput(){
       this.showInput.set(!this.showInput());
-      if(this.showInput() && this.inputText){
-        this.renderer.setStyle(this.inputText, 'width', '200px')
+      this.cdr.detectChanges()
+      if(this.inputText?.nativeElement){
         this.inputText.nativeElement.focus();
       }
     }
