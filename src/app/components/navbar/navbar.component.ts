@@ -12,27 +12,6 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   selector: 'app-navbar',
   standalone: true,
   imports: [ MatIconModule,  MatSidenav, MatSidenavContainer, MatSidenavContent, MatButtonModule, MatToolbarModule, RouterOutlet, CustomSidenavComponent],
-  animations: [ 
-    trigger('openClose', [
-      state('open', style({
-        height: '20px',
-        opacity: 1,
-        backgroundColor: 'yellow',})),
-      state('closed', style({
-        height: '10px',
-        opacity: 0.8,
-        backgroundColor: 'blue',
-      })),
-      // transition('* => closed', [animate('1s')]),
-      // transition('* => open', [animate('0.5s')])
-      // transition('open <=> closed', [animate('1s')])
-    ]),
-    trigger('myInsertRemoveTrigger',
-      [state('c', style({
-        backgroundColor: 'red'
-      })), transition('* =>c', [animate('2s')])]
-    )
-  ],
   template: `
     <mat-toolbar class="toolbar"  #toolbar id="mat-toolbar">
     <div class="header">
@@ -93,7 +72,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     }
     .search{
       outline: none;
-      width: 100%;
+      width: 60%;
       margin-left: 10px;
       margin-right: 30px;
       background-color: inherit;
@@ -159,14 +138,7 @@ export class NavbarComponent implements OnInit{
         this.theme.set('light_mode')
         this.body.classList.remove('dark-mode');
       }
-    }
-
-
-    isOpen = true;
-    toggler(){
-      this.isOpen = !this.isOpen;
-    }
-    
+    }    
     showInput= signal(false);
     @ViewChild('inputText', {static: false}) inputText!: ElementRef;
   
