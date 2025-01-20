@@ -68,11 +68,11 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       background-color: #e7e4bf;
       margin-left: auto;
       width: fit-content;
-      // transition: width 2s;
+      transition: width 2s;
     }
     .search{
       outline: none;
-      width: 60%;
+      width: 80%;
       margin-left: 10px;
       margin-right: 30px;
       background-color: inherit;
@@ -81,13 +81,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     #search:focus{
      font-weight: 100;
     }
-    .SearchBtnExpands{
-      width:50%;
-      background-color:#e7e4bf00;
-      transform: all 400ms;
-    }
     .toggleBtn {
-      padding: 10px 20px;
       font-size: 16px;
       background-color: #007bff;
       color: white;
@@ -95,12 +89,19 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       border-radius: 4px;
       cursor: pointer;
     }
-    .showSearch{
-      visibility: visible;
-      opacity: 1;
-    }
     .toggleBtn:hover {
       background-color: #0056b3;
+    }
+    @media screen and (max-width: 590px){
+      .search{
+        width: 100px;
+      }
+    }
+
+    @media screen and (max-width: 350px){
+      .search{
+        width: 80px;
+      }
     }
   `
 })
