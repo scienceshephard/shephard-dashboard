@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
   template: `
     <p>
       dashboard works!
-      
     </p>
   `,
   styles: ``

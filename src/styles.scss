@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @include mat.core();
+
 $dark-theme: mat.define-theme((
   color:(
     theme-type:dark,
@@ -7,10 +8,17 @@ $dark-theme: mat.define-theme((
   ),
 ));
 
+*{
+  font-family:  "Poppins", serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 $light-theme: mat.define-theme((
 color: (
   theme-type:light,
-  primary: mat.$yellow-palette,
+  primary: mat.$magenta-palette,
 ),
 ));
 
@@ -18,28 +26,13 @@ color: (
 html, body.dark-mode{
   @include mat.all-component-colors($dark-theme);
 }
-.mat-sidenav{
-  border-right: 1px solid #dadae1;
-}
 
-html, body, app-root, app-navbar {
-  display: block; 
+html, body{ 
+  @include mat.all-component-themes($light-theme); 
   height: 100vh;
+  background-color: #FFFFFF;
 }
 
-html, body { 
-  @include mat.all-component-themes($light-theme);
-  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
-}
-
-.side-navbar{
-    height: calc(100vh - 65px);
-}
-#mat-toolbar{
-  position: relative;
-  z-index: 3;
-  border-bottom: 3px solid #eddbdbc6;
-}
 .mat-sidenav, .mat-sidenav-content{
   transition: all 400ms;
 }

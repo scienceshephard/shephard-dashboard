@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-leaderboard',
+  selector: 'app-signout',
   standalone: true,
   imports: [],
   template: `
     <p>
-      leaderboard works!
+      signout works!
     </p>
   `,
   styles: ``
 })
-export class LeaderboardComponent {
+export class SignoutComponent {
 
 }

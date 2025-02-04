@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-curve-charts',
+  selector: 'app-histogram',
   standalone: true,
   imports: [],
   template: `
     <p>
-      curve-charts works!
+      histogram works!
     </p>
   `,
   styles: ``
 })
-export class CurveChartsComponent {
+export class HistogramComponent {
 
 }

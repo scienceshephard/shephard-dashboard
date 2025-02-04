@@ -1,42 +1,45 @@
 import { Injectable, signal } from '@angular/core';
 import { Widget } from '../model/dashboard';
-import { DashboardComponent } from '../pages/home/dashboard/dashboard.component';
-import { ChatComponent } from '../pages/chat/chat.component';
-import { BarChartsComponent } from '../pages/home/dashboard/bar-charts.component';
-import { CurveChartsComponent } from '../pages/home/dashboard/curve-charts.component';
-import { ListChartsComponent } from '../pages/home/dashboard/list-charts.component';
+import { HistogramComponent } from '../pages/home/dashboard/histogram.component';
+import { LinechartComponent } from '../pages/home/dashboard/linechart.component';
+import { CurvechartComponent } from '../pages/home/dashboard/curvechart.component';
+import { BarchartComponent } from '../pages/home/dashboard/barchart.component';
 import { MapsComponent } from '../pages/home/dashboard/maps.component';
+import { DashboardComponent } from '../pages/home/dashboard/dashboard.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
-
+  //Collapse the side navbar
+  collapsed= signal<boolean>(false);
+  constructor() { }
   widgets= signal<Widget[]>([
     {
       id: 1,
       title: "Todays Sales",
-      content: DashboardComponent},
+      content: DashboardComponent
+    },
     {
       id: 2,
       title: "Visitors Insights",
-      content: ChatComponent
+      content: CurvechartComponent
     },
     {
       id: 3,
       title: "Total Revenue",
-      content: BarChartsComponent
+      content: BarchartComponent
     },
     {
       
       id: 4,
       title: "Customer Satisfaction",
-      content: CurveChartsComponent,
+      content: MapsComponent,
     },
     {
       id: 5,
       title: "Top Products",
-      content: ListChartsComponent,
+      content: HistogramComponent,
     },
     {
       id: 6,
@@ -46,28 +49,7 @@ export class DashboardService {
     {
       id: 7,
       title: "Volume Vs Service Level",
-      content: BarChartsComponent,
+      content: LinechartComponent,
     },
   ])
-  movemoveWidgetToRight(id:number){
-    const index = this.widgets().findIndex( w => w.id === id);
-    if(index === this.widgets().length -1){
-      return;
-    }
-    const newWidget = [...this.widgets()];
-    [newWidget[index], newWidget[index+ 1]] =[{...newWidget[index + 1]},{...newWidget[index]}];
-    this.widgets.set(newWidget);
-  }
-  moveWidgetToLeft(id:number){
-    const index = this.widgets().findIndex( w => w.id === id);
-    if(index === 0){
-      return;
-    }
-    const newWidget = [...this.widgets()];
-    [newWidget[index], newWidget[index - 1]] =[{...newWidget[index - 1]},{...newWidget[index]}];
-    this.widgets.set(newWidget);
-
-  }
-
-  constructor() { }
 }

@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-order',
+  selector: 'app-linechart',
   standalone: true,
   imports: [],
   template: `
     <p>
-      order works!
+      linechart works!
     </p>
   `,
   styles: ``
 })
-export class OrderComponent {
+export class LinechartComponent {
 
 }

@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-chat',
+  selector: 'app-barchart',
   standalone: true,
   imports: [],
   template: `
     <p>
-      chat works!
+      barchart works!
     </p>
   `,
   styles: ``
 })
-export class ChatComponent {
+export class BarchartComponent {
 
 }

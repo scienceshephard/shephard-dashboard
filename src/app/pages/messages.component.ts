@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-sales',
+  selector: 'app-messages',
   standalone: true,
   imports: [],
   template: `
     <p>
-      sales works!
+      messages works!
     </p>
   `,
   styles: ``
 })
-export class SalesComponent {
+export class MessagesComponent {
 
 }

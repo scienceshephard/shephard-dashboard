@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-list-charts',
+  selector: 'app-curvechart',
   standalone: true,
   imports: [],
   template: `
     <p>
-      list-charts works!
+      curvechart works!
     </p>
   `,
   styles: ``
 })
-export class ListChartsComponent {
+export class CurvechartComponent {
 
 }
