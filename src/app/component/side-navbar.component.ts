@@ -24,8 +24,7 @@ export type MenuItem= {
           }
           </a>
         }
-      
-    </mat-nav-list>
+  </mat-nav-list>
   `,
   styles: `
   `

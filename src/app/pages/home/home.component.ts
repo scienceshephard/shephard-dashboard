@@ -1,8 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 import { DashboardService } from '../../service/dashboard.service';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { NgComponentOutlet } from '@angular/common';
 import { Widget } from '../../model/dashboard';
 import { DashboardWidgetComponent } from "../../component/widget/dashboard-widget.component";
 
@@ -19,12 +17,13 @@ import { DashboardWidgetComponent } from "../../component/widget/dashboard-widge
   `,
   styles: `
   .dashboard-widget{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
     margin: 20px;
   }
-  `
+    `
 })
 export class HomeComponent {
   store= inject(DashboardService)

@@ -11,27 +11,22 @@ import { NgComponentOutlet } from '@angular/common';
       <div class="header-contaner">
         <h3>{{data().title}}</h3>
       </div>  
-      <<ng-container [ngComponentOutlet]="data().content" />
+      <ng-container [ngComponentOutlet]="data().content" />
     </div>
   `,
   styles: `
    .dashboard-container{
-      position: relative;
       height: 100%;
       width: 100%;
       padding: 20px;
-      border-radius: inherit;
-      box-sizing: border-box;
-      overflow: hidden;
+      border-radius: 15px;
       background-color: #FFFFFF;
+      
     }
     .header-container{
       display: flex;
       align-items: center;
       justify-content: space-between;
-    } :host{
-      display: block;
-      border-radius: 15px;
     }
     .box-shadow{
       box-shadow: 0px 4px 8px  rgb(0, 0, 0, 0.2);
