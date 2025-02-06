@@ -17,9 +17,10 @@ import { DashboardWidgetComponent } from "../../component/widget/dashboard-widge
   `,
   styles: `
   .dashboard-widget{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    display: grid;
+    grid-template-areas: "today today visitors"
+                          "revenue customers target"
+                          "product sales volume";
     gap: 20px;
     margin: 20px;
   }
