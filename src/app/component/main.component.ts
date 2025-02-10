@@ -33,7 +33,6 @@ import { DashboardService } from '../service/dashboard.service';
 })
 export class MainComponent {
   constructor(private dashboardService: DashboardService){ }
-
   sidenavWidth= computed(()=> this.dashboardService.collapsed()? '65px': '200px')
 
 }

@@ -1,5 +1,6 @@
-import { Component, AfterViewInit, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { Chart, ChartConfiguration, registerables, scales } from 'chart.js';
+import { Component, OnInit } from '@angular/core';
+import { Chart, registerables, } from 'chart.js';
+import { DummydataService } from '../../../service/dummydata.service';
 
 // Register Chart.js modules
 Chart.register(...registerables);
@@ -11,15 +12,16 @@ Chart.register(...registerables);
   template: `<canvas  id="visitorChart"></canvas>`,
   styles: `
   canvas {
-    width: 400px;
+    width: 500px;
     height: 300px;
   }
 `
 })
 export class CurvechartComponent implements OnInit {
+  constructor(private dummydata: DummydataService){}
   ngOnInit() {
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
-
+    const labels = this.dummydata.getLabels();
+    
     new Chart('visitorChart', {
       type: 'line',
       data: {
@@ -27,7 +29,7 @@ export class CurvechartComponent implements OnInit {
         datasets: [
           {
             label: 'Loyal Customers',
-            data: [100,  200, 350, 180, 400],
+            data: this.dummydata.dataset1,
             borderColor: 'purple',
             borderWidth: 4,
             backgroundColor: 'rgba(128,0,128,0.2)',
@@ -36,7 +38,7 @@ export class CurvechartComponent implements OnInit {
           },
           {
             label: 'New Customers',
-            data: [250, 180, 350, 150, 300, 200],
+            data: this.dummydata.dataset2,
             borderColor: 'red',
             borderWidth: 4,
             backgroundColor: 'rgba(255,0,0,0.2)',
@@ -45,7 +47,7 @@ export class CurvechartComponent implements OnInit {
           },
           {
             label: 'Unique Customers',
-            data: [180, 250, 150, 300, 220, 350],
+            data: this.dummydata.dataset3,
             borderColor: 'green',
             borderWidth: 4,
             backgroundColor: 'rgba(0,128,0,0.2)',
