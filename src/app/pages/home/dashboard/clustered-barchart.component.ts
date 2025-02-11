@@ -17,7 +17,7 @@ Chart.register(...registerables);
   styles: `
     canvas{
       display: block;
-      width: 500px
+      width: 400px;
     }
   `
 })
@@ -53,11 +53,11 @@ export class ClusteredBarchartComponent  implements AfterViewInit{
           scales: {
             x: {
               stacked: false, // Ensures bars are clustered side-by-side
-              title: { display: true, text: 'Months' }
+              title: { display: true, text: 'Months' },
             },
             y: {
               beginAtZero: true,
-              title: { display: true, text: 'Sales' }
+              title: { display: true, text: 'Sales' },
             }
           }
         }

@@ -36,7 +36,7 @@ export class DashboardService {
       
       id: 4,
       title: "Customer Satisfaction",
-      content: MapsComponent,
+      content: LinechartComponent,
      },
     {
       id: 5,
@@ -56,7 +56,7 @@ export class DashboardService {
     {
       id: 8,
       title: "Volume Vs Service Level",
-      content: LinechartComponent,
+      content: BarchartComponent,
      },
   ])
 }
