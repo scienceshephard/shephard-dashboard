@@ -35,7 +35,6 @@ export class NavbarComponent {
 
   toogle(){
     this.dashboardService.collapsed.set(!this.dashboardService.collapsed());
-    console.log(this.dashboardService.collapsed().valueOf());
   }
 
   theme= signal<string>('light_mode');

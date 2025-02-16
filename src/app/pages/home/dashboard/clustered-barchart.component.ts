@@ -10,9 +10,7 @@ Chart.register(...registerables);
   standalone: true,
   imports: [],
   template: `
-  <div>
     <canvas #clusteredBarChart></canvas>
-  </div>
   `,
   styles: `
     canvas{
@@ -54,6 +52,9 @@ export class ClusteredBarchartComponent  implements AfterViewInit{
             x: {
               stacked: false, // Ensures bars are clustered side-by-side
               title: { display: true, text: 'Months' },
+              grid:{
+                display: false,
+              },
             },
             y: {
               beginAtZero: true,

@@ -10,14 +10,14 @@ Chart.register(...registerables);
   standalone: true,
   imports: [],
   template: `
-  <div>
     <canvas id='LineChart'></canvas>
-  </div>
   `,
   styles: `
   canvas{
     display: block;
-    width: 400px;
+    width: 300px;
+    height: 80% !important;
+    margin: auto;
   }
   `
 })
@@ -35,17 +35,19 @@ export class LinechartComponent implements OnInit{
               label: 'Last Month',
               data: this.dummyData.dataset1,
               backgroundColor: '#0094FE',
-              borderWidth: 1,
+              borderColor: '#0094FE',
+              borderWidth: 4,
               tension: 0.4,
-              pointRadius: 0,
+              pointRadius: 3,
             },
             {
               label: 'This Month',
-              data: this.dummyData.dataset2,
+              data: this.dummyData.dataset3,
               backgroundColor: '#00DF96',
-              borderWidth: 1,
+              borderColor: '#00DF96',
+              borderWidth: 4,
               tension: 0.4,
-              pointRadius: 0,
+              pointRadius: 3,
             }
           ]
       },
@@ -53,12 +55,38 @@ export class LinechartComponent implements OnInit{
         responsive: true,
         scales: {
           x: {
-            stacked: false, // Ensures bars are clustered side-by-side
-            title: { display: true, text: 'Months' },
+            grid: {
+              display: false,
+              drawOnChartArea: false,
+              drawTicks: false,
+              color: 'white',
+              lineWidth: 1,
+            },
+            ticks:{
+              display: false,
+            },
           },
           y: {
+            grid: {
+              display: false,
+              drawOnChartArea: false,
+              drawTicks: false,
+              color: 'white',
+              lineWidth: 1,
+              
+            },
+            ticks:{
+              display: false,
+            },
             beginAtZero: true,
-            title: { display: true, text: 'Sales' },
+          }
+        },
+        plugins:{
+          legend:{
+            position: 'bottom',
+          },
+          tooltip:{
+            enabled: true,
           }
         }
       }
