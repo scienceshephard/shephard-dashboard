@@ -17,8 +17,8 @@ import { DashboardWidgetComponent } from "../../component/widget/dashboard-widge
   `,
   styles: `
   .dashboard-widget{
-    display:flex;
-    flex-wrap: wrap;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 20px;
     margin: 20px;
   }

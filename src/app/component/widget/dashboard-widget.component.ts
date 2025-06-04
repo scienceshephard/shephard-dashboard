@@ -16,8 +16,9 @@ import { NgComponentOutlet } from '@angular/common';
   `,
   styles: `
    .dashboard-container{
+     
       height: 100%;
-      width: fit-content;
+      grid-column: 3 / span 2;
       padding: 20px;
       border-radius: 15px;
       background-color: #FFFFFF;
