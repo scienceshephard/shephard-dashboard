@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NavbarComponent } from "./component/navbar.component";
 import { MainComponent } from "./component/main.component";
 import { MobileMainComponent } from './component/mobile-main.component';
+import { ResponsiveService } from './service/responsive-service.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,11 @@ import { MobileMainComponent } from './component/mobile-main.component';
   template: `
   <div class="container">
     <app-navbar />
-    <app-main />
-    <app-mobile-main />
+    @if(!isMobile()){
+      <app-main />
+    } @else {
+    <app-mobile-main  />
+    }
   </div>
   `,
   styles: `
@@ -40,4 +44,5 @@ import { MobileMainComponent } from './component/mobile-main.component';
 })
 export class AppComponent {
   title = 'shephard-dashboard';
+  isMobile = inject(ResponsiveService).isMobile;
 }

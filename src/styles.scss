@@ -13,6 +13,7 @@ $dark-theme: mat.define-theme((
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 $light-theme: mat.define-theme((
@@ -27,7 +28,7 @@ html, body.dark-mode{
   @include mat.all-component-colors($dark-theme);
 }
 
-html, body{ 
+html, body, .container{ 
   @include mat.all-component-themes($light-theme); 
   height: 100vh;
   background-color: #FFFFFF;

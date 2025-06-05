@@ -22,6 +22,10 @@ import { MenuItemsService } from '../service/menu-items.service';
     </nav>
   `,
   styles: `
+  a{
+    display: flex;
+    flex-direction: column;
+  }
   nav{
     display: flex;
     justify-content: space-around;

@@ -26,7 +26,7 @@ import { DashboardService } from '../service/dashboard.service';
       height: 100%;
       display: flex;
       flex-direction: column;
-      margin: 20px;
+      margin: 0px;
     }
   `
 })
