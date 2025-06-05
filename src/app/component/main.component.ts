@@ -23,7 +23,6 @@ import { DashboardService } from '../service/dashboard.service';
       height:100%;
     }
     mat-sidenav-content{
-      background-color:#FBFBFD;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -33,6 +32,6 @@ import { DashboardService } from '../service/dashboard.service';
 })
 export class MainComponent {
   constructor(private dashboardService: DashboardService){ }
-  sidenavWidth= computed(()=> this.dashboardService.collapsed()? '65px': '200px')
+  sidenavWidth= computed(()=> this.dashboardService.collapsed()? '6%': '300px')
 
 }

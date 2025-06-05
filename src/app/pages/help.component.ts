@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-messages',
+  selector: 'app-help',
   standalone: true,
   imports: [],
   template: `
     <p>
-      messages works!
+      help works!
     </p>
   `,
   styles: ``
 })
-export class MessagesComponent {
+export class HelpComponent {
 
 }
