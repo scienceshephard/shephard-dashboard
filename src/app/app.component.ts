@@ -24,8 +24,16 @@ import { ResponsiveService } from './service/responsive-service.service';
       flex-direction: column;
       height: 100vh;
     }
+    app-navbar{
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
     app-main{
       height: 100%;
+      padding-top: 64px;
     }
     app-mobile-main{
       display: none;
@@ -37,6 +45,8 @@ import { ResponsiveService } from './service/responsive-service.service';
       app-mobile-main{
       display: block;
       background-color: var(--mat-app-background-color);
+      padding-top: 50px;
+      padding-bottom: 80px;
       }
     }
   `

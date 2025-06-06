@@ -57,8 +57,9 @@ import { MatIconModule } from '@angular/material/icon';
     }
     .dashboard-card{
       width: fit-content;
-      padding: 10px;
+      padding: 30px 20px;
       border-radius: 20px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     }
     span{
       color: blue;

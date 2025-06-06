@@ -28,12 +28,15 @@ import { NgComponentOutlet } from '@angular/common';
     .box-shadow{
       box-shadow: 0px 4px 8px  rgb(0, 0, 0, 0.2);
     }
-    @media (max-width: 590){
+    @media (max-width: 590px){
       .dashboard-container{
         width: 100%;
-        margin: 0;
-    // border-radius
+        border-radius: 0px;
+        border-bottom: 3px solid var(--mat-divider-color);
       }
+    .box-shadow{
+      box-shadow: none;
+    }
     }
     `
 })
