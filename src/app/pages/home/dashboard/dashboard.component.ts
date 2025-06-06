@@ -15,29 +15,29 @@ import { MatIconModule } from '@angular/material/icon';
     <div class="dashboard-content">
       <div class="dashboard-card" [style]="'background-color:#FFE2E6;'">
         <label [style]="'background-color:#F9597D;'"><mat-icon fontIcon="leaderboard" [style.color]="color" [style.backgroundColor]="'white'" /></label>
-        <h2>$1k</h2>
-        <p>Total Sales<p>
+        <h2 [style]="'color: black;'">$1k</h2>
+        <p [style]="'color: black;'">Total Sales<p>
           <span>+8% from yesterday</span>
       </div>
 
       <div class="dashboard-card" [style]="'background-color:#FFF4DE;'">
         <label [style]="'background-color:#FF947A;'"><mat-icon fontIcon="summarize" [style.color]="'white'" [style.backgroundColor]="'#FF947A'" /></label>
-        <h2>300</h2>
-        <p>Total Order<p>
+        <h2 [style]="'color: black;'">300</h2>
+        <p [style]="'color: black;'">Total Order<p>
           <span>+5% from yesterday</span>
       </div>
 
       <div class="dashboard-card" [style]="'background-color:#DCFCE7;'">
         <label [style]="'background-color:#3CD755;'"><mat-icon fontIcon="edit" [style.color]="'white'" [style.backgroundColor]="'bgColor'" /></label>
-        <h2>5</h2>
-        <p>Product Sold<p>
+        <h2 [style]="'color: black;'">5</h2>
+        <p [style]="'color: black;'">Product Sold<p>
           <span>+1.2% from yesterday</span>
       </div>
 
       <div class="dashboard-card" [style]="'background-color:#F3E8FF;'">
         <label [style]="'background-color:#BF83FF;'"><mat-icon fontIcon="person_add" [style.color]="'white'" [style.backgroundColor]="'bgColor'" /></label>
-        <h2>8</h2>
-        <p>New Customers<p>
+        <h2 [style]="'color: black;'">8</h2>
+        <p [style]="'color: black;'">New Customers<p>
           <span>0.5% from yesterday</span>
       </div>
     </div>

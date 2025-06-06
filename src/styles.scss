@@ -12,8 +12,10 @@ $dark-theme: mat.m2-define-dark-theme((
     primary: $primary-palette,
     accent: $accent-palette,
     warn: $warn-palette,
-    // use-system-variables: true,
+    use-system-variables: true,
   ),
+  typography: mat.m2-define-typography-config(),
+  density: 1,
 ));
 *{
   font-family:  "Poppins", serif;
@@ -21,6 +23,7 @@ $dark-theme: mat.m2-define-dark-theme((
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  color: var(--mat-app-text-color);
 }
 //Define Light theme
 $light-theme: mat.m2-define-light-theme((
