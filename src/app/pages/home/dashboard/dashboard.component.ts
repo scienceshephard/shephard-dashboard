@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   imports: [ MatButtonModule, MatIconModule ],
   template: `
-    <div class='dashboard-container'>
+    <div>
     <div class="dashboard-subtitle">
       <p>Sales Summary</p>
       <button mat-button > <mat-icon fontIcon="ios_share"/> Export</button>
@@ -72,6 +72,18 @@ import { MatIconModule } from '@angular/material/icon';
       height: 50px;
       border-radius: 50%;
    }
+   @media (max-width: 645px){
+    .dashboard-content{
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+      }
+      .dashboard-card{
+        width: fit-content;
+        margin-bottom: 20px;
+      }
+
+    }
   `
 })
 export class DashboardComponent {

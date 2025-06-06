@@ -15,7 +15,6 @@ import { MenuItemsService } from '../service/menu-items.service';
       @for (item of getmenuItems(); track $index) {
           <a mat-list-item [routerLink]="[item.route]" routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive">
               <mat-icon class='link' color="primary" [fontSet]="rla.isActive ? 'material-icons': 'material-icons-outlined' " matListItemIcon> {{ item.icon }} </mat-icon>
-          
             <span matListItemTitle>{{ item.label }}</span>
           </a>
         }

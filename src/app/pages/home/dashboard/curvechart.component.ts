@@ -12,7 +12,7 @@ Chart.register(...registerables);
   template: `<canvas  id="visitorChart"></canvas>`,
   styles: `
   canvas {
-    width: 500px;
+    width: 50%;
     height: 300px;
   }
 `

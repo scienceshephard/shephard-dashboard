@@ -1,8 +1,9 @@
-import { ChangeDetectorRef, Component, computed, HostListener, Renderer2, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, computed, HostListener, inject, Renderer2, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatButtonModule } from '@angular/material/button'
 import { DashboardService } from '../service/dashboard.service';
+import { ResponsiveService } from '../service/responsive-service.service';
 
 
 @Component({
@@ -12,9 +13,11 @@ import { DashboardService } from '../service/dashboard.service';
   template: `
    <mat-toolbar class="toolbar"  #toolbar>
     <div class="header">
+      @if(!isMobile()){
         <button mat-icon-button (click)="toogle()"> 
           <mat-icon fontIcon="menu" />
       </button>
+      }
       <button mat-icon-button (click)="changeTheme()">
         <mat-icon fontIcon="{{theme()}}"/>
       </button>
@@ -71,7 +74,7 @@ import { DashboardService } from '../service/dashboard.service';
 export class NavbarComponent {
   header:String = "Shephard Dashboard";
   showSearch = signal<boolean>(false)
-
+  isMobile = inject(ResponsiveService).isMobile;
   constructor(private dashboardService: DashboardService){
 
   }

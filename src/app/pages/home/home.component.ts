@@ -18,9 +18,30 @@ import { DashboardWidgetComponent } from "../../component/widget/dashboard-widge
   styles: `
   .dashboard-widget{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     gap: 20px;
     margin: 20px;
+  }
+  @media (max-width: 545px){
+    .dashboard-widget{
+      width: 100%;
+      margin:0px;
+    }
+  }
+  @media (max-width: 545px){
+    .dashboard-widget{
+      width: 100%;
+      margin:0px;
+    }
+  }
+  
+  @media (max-width: 645px){
+    .dashboard-widget{
+      grid-template-columns: 1fr;
+      margin: 0;
+      gap: 10px;
+      // width: 100%;
+    }
   }
     `
 })

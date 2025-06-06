@@ -23,7 +23,7 @@ Chart.register(...registerables);
   styles: `
     canvas{
       display: block;
-      width: 300px;
+      width: 50%;
     }
     .details{
       display: flex;

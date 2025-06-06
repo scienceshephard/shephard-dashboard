@@ -16,9 +16,7 @@ import { NgComponentOutlet } from '@angular/common';
   `,
   styles: `
    .dashboard-container{
-     
       height: 100%;
-      grid-column: 3 / span 2;
       padding: 20px;
       border-radius: 15px;
       background-color: #FFFFFF;
@@ -30,6 +28,13 @@ import { NgComponentOutlet } from '@angular/common';
     }
     .box-shadow{
       box-shadow: 0px 4px 8px  rgb(0, 0, 0, 0.2);
+    }
+    @media (max-width: 590){
+      .dashboard-container{
+        width: 100%;
+        margin: 0;
+    // border-radius
+      }
     }
     `
 })

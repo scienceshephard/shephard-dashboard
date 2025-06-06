@@ -35,7 +35,6 @@ import { ResponsiveService } from './service/responsive-service.service';
         display: none;
       }
       app-mobile-main{
-        border: 1px solid #ccc;
         height: 100%;
         display: block;
       }

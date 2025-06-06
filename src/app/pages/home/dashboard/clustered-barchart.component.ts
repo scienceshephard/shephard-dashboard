@@ -15,7 +15,7 @@ Chart.register(...registerables);
   styles: `
     canvas{
       display: block;
-      width: 400px;
+      width: 50%;
     }
   `
 })
