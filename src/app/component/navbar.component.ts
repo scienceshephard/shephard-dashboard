@@ -26,6 +26,12 @@ import { ResponsiveService } from '../service/responsive-service.service';
   </mat-toolbar>
   `,
   styles: `
+  button[mat-icon-button] mat-icon{
+    font-size: 3rem;
+    line-height: 3rem;
+    width: 3rem;
+    height: 3rem;
+  }
   .toolbar{
     display: flex;
     justify-content: space-between;
@@ -33,7 +39,10 @@ import { ResponsiveService } from '../service/responsive-service.service';
     padding: 0 20px;
   }
   .toolbar h1{
-    font-size: 2rem;
+    font-size: 2.4rem;
+    font-family: "Rubik Gemstones", system-ui;
+    font-weight: 400;
+    font-style: normal;
   }
   `
 })
