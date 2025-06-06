@@ -22,59 +22,25 @@ import { ResponsiveService } from '../service/responsive-service.service';
         <mat-icon fontIcon="{{theme()}}"/>
       </button>
     </div>
-    <div class="header-content" >
-      <h1>{{header}}</h1>
-      <div class='searchButton'>
-        <label for='searchButton' (click) = " showSearch.set(true) " > 
-          <mat-icon fontIcon="search" />
-        </label>
-          <input type='text' [style.display]= " showSearch()? 'block': 'hidden' " (blur)=" showSearch.set(false) " placeholder='Enter your search prompt' id='searchButton' />
-      </div>
-    </div>
+    <h1>{{ showFullheader() ? 'S D' : 'Shephard Dashboard'}}</h1>
   </mat-toolbar>
   `,
   styles: `
-  .header-content{
-    width: 100%;
+  .toolbar{
     display: flex;
-  }
-  .header-content h1{
-   align-self: center;
-  }
-  label[for='searchButton']{
-    border-radius: 100%;
-    padding: 5px;
-    cursor: pointer;
-    margin-right: 5px;
-    background-color: cyan;
-    display: flex;
-    border: 1px solid;
+    justify-content: space-between;
     align-items: center;
-    width: fit-content;
+    padding: 0 20px;
   }
-  .searchButton{
-    border: 1px solid;
-    margin-left: auto;
-    padding: 5px;
-    display: flex;
-    border-radius: 20px;
-    max-width: 50%;
+  .toolbar h1{
+    font-size: 2rem;
   }
-    input[id='searchButton']{
-      // display: none;
-      outline: none;
-      width: 97%;
-      font-size: 22px;
-      background-color: transparent;
-      height: 100%;
-      border: none;
-    }
   `
 })
 export class NavbarComponent {
-  header:String = "Shephard Dashboard";
   showSearch = signal<boolean>(false)
   isMobile = inject(ResponsiveService).isMobile;
+  showFullheader=inject(ResponsiveService).showFullheader;
   constructor(private dashboardService: DashboardService){
 
   }
