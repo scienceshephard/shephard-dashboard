@@ -5,11 +5,16 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <p>
-      account works!
-    </p>
+    <div class="account-page">
+      <h1>Account Page</h1>
+      <p>This is the account page content.</p>
+    </div>
   `,
-  styles: ``
+  styles: `
+    .account-page{
+      height: 80vh;
+    }
+  `
 })
 export class AccountComponent {
 

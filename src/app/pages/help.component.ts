@@ -5,11 +5,16 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <p>
-      help works!
-    </p>
+    <div class='help-page'>
+      <h1>Help Page</h1>
+      <p>This is the help center page content.</p>
+    </div>
   `,
-  styles: ``
+  styles: `
+    .help-page{
+      height: 80vh;
+    }
+  `
 })
 export class HelpComponent {
 

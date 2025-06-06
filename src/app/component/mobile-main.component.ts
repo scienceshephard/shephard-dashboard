@@ -13,7 +13,6 @@ import { RouterOutlet } from '@angular/router';
     <app-mobile-navbar />
   `,
   styles: `
-
     app-mobile-navbar{
       position: fixed;
       bottom: 0;

@@ -5,11 +5,16 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <p>
-      settings works!
-    </p>
+    <div class="settings-page">
+      <h1>Settings Page</h1>
+      <p>This is the settings page content.</p>
+    </div>
   `,
-  styles: ``
+  styles: `
+    .settings-page{
+      height: 80vh;
+    }
+  `
 })
 export class SettingsComponent {
 
