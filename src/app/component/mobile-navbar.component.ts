@@ -13,9 +13,8 @@ import { MenuItemsService } from '../service/menu-items.service';
   template: `
     <nav>
       @for (item of getmenuItems(); track $index) {
-          <a mat-list-item [routerLink]="[item.route]" routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive">
+          <a mat-list-item [routerLink]="[item.route]" title="{{item.label}}" routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive">
               <mat-icon class='link' color="primary" [fontSet]="rla.isActive ? 'material-icons': 'material-icons-outlined' " matListItemIcon> {{ item.icon }} </mat-icon>
-            <span matListItemTitle>{{ item.label }}</span>
           </a>
         }
     </nav>
@@ -23,7 +22,17 @@ import { MenuItemsService } from '../service/menu-items.service';
   styles: `
   a{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+  }
+  .link{
+    font-size: 3rem;
+  }
+  .link.mat-icon{
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
   }
   nav{
     display: flex;
