@@ -35,8 +35,8 @@ import { ResponsiveService } from './service/responsive-service.service';
         display: none;
       }
       app-mobile-main{
-        height: 100%;
-        display: block;
+      display: block;
+      background-color: var(--mat-app-background-color);
       }
     }
   `

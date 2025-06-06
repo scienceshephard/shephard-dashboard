@@ -1,13 +1,20 @@
 @use '@angular/material' as mat;
 @include mat.core();
 
-$dark-theme: mat.define-theme((
-  color:(
-    theme-type:dark,
-    primary: mat.$blue-palette,
+// Define custom palettes using m2-define-palette
+$primary-palette: mat.m2-define-palette(mat.$m2-indigo-palette);
+$accent-palette: mat.m2-define-palette(mat.$m2-pink-palette);
+$warn-palette: mat.m2-define-palette(mat.$m2-red-palette);
+
+// Define dark theme
+$dark-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+    // use-system-variables: true,
   ),
 ));
-
 *{
   font-family:  "Poppins", serif;
   margin: 0;
@@ -15,12 +22,14 @@ $dark-theme: mat.define-theme((
   box-sizing: border-box;
   text-decoration: none;
 }
-
-$light-theme: mat.define-theme((
-color: (
-  theme-type:light,
-  primary: mat.$magenta-palette,
-),
+//Define Light theme
+$light-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+    use-system-variables: true,
+  ),
 ));
 
 @media (max-width: 645px){
@@ -28,16 +37,11 @@ color: (
     font-size: 14px;
   }
 }
-html, body, .container{
-  min-height: 100vh;
-}
-html, body.dark-mode{
+body.dark-mode{
   @include mat.all-component-colors($dark-theme);
 }
-
-html, body, .container{ 
-  @include mat.all-component-themes($light-theme); 
-  background-color: #FFFFFF;
+:root {
+  @include mat.all-component-themes($light-theme);
 }
 
 .mat-sidenav, .mat-sidenav-content{

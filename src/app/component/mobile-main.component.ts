@@ -13,13 +13,14 @@ import { RouterOutlet } from '@angular/router';
     <app-mobile-navbar />
   `,
   styles: `
+
     app-mobile-navbar{
       position: fixed;
       bottom: 0;
       width: 100%;
       z-index: 1000;
-      border-top: 1px solid #ccc;
-      background-color: #fff;
+      border-top: 1px solid var(--mat-sys-outline);
+      background-color: var(--mat-app-background-color);
     }
   `
 })

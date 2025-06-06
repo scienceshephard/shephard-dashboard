@@ -19,7 +19,6 @@ import { NgComponentOutlet } from '@angular/common';
       height: 100%;
       padding: 20px;
       border-radius: 15px;
-      background-color: #FFFFFF;
     }
     .header-container{
       display: flex;

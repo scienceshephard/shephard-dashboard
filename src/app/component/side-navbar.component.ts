@@ -14,7 +14,7 @@ import { MenuItemsService } from '../service/menu-items.service';
     <nav>
       @for (item of getmenuItems(); track item.route) {
           <a mat-list-item [routerLink]="[item.route]" routerLinkActive #rla="routerLinkActive" [activated]="rla.isActive">
-              <mat-icon class='link' color="primary" [fontIcon]="rla.isActive ? 'material-icons': 'material-icons-outlined' " matListItemIcon> {{ item.icon }} </mat-icon>
+              <mat-icon class='link' color="primary" [fontSet]="rla.isActive ? 'material-icons': 'material-icons-outlined' " matListItemIcon> {{ item.icon }} </mat-icon>
           @if(!sidenavCollapsed()) {
             <span matListItemTitle>{{ item.label }}</span>
           }
