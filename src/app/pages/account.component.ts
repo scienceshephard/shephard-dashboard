@@ -11,36 +11,14 @@ import { CommonModule } from '@angular/common';
     <section class="account-page">
       <div class="form">
         <div class="img-container"></div>
-        <div>
+        <div class='user-details'>
           <label>{{ 'Avatar'}}</label>
+          <label>{{ 'Avatar First Name'}}</label>
+          <label>{{ 'Avatar Last Name'}}</label>
         </div>
         <fieldset>
           <legend>Account Settings</legend>
           <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
-
-            <div class="input-container">
-              <div class="input-container">
-                <label for="firstName">First Name:</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  formControlName="firstName"
-                  [ngClass]="{ 'error-input': isInvalid('firstName') }"
-                />
-              </div>
-              <div class="input-container">
-                <label for="Last Name">Last Name:</label>
-                <input
-                  type="text"
-                  id="Last Name"
-                  formControlName="Last Name"
-                  [ngClass]="{ 'error-input': isInvalid('Last Name') }"
-                />
-              </div>
-            </div>
-            @if (isInvalid('Last Name')) {
-              <p class="error-msg">Password is required.</p>
-            }
             <div class="input-container">
               <label for="username">Username:</label>
               <input
@@ -65,7 +43,32 @@ import { CommonModule } from '@angular/common';
             </div>
             @if (isInvalid('email')) {
               <p class="error-msg">Email is required.</p>
-            }            <button type="submit">Update</button>
+            }
+
+            <div class="input-container">
+              <label for="firstName">First Name:</label>
+              <input
+                type="text"
+                id="firstName"
+                formControlName="firstName"
+                [ngClass]="{ 'error-input': isInvalid('firstName') }"
+              />
+            </div>
+            <div class="input-container">
+              <label for="lastName">Last Name:</label>
+              <input
+                type="text"
+                id="lastName"
+                formControlName="lastName"
+                [ngClass]="{ 'error-input': isInvalid('lastName') }"
+              />
+            </div>
+            @if (isInvalid('lastName')) {
+              <p class="error-msg">Password is required.</p>
+            }
+
+            <br />
+            <button type="submit">Update</button>
           </form>
         </fieldset>
       </div>
@@ -77,18 +80,33 @@ import { CommonModule } from '@angular/common';
     </section>
   `,
   styles: [`
+    .user-details{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: end;
+      height: 100%;
+    }
+    .user-details label{
+      background-image: linear-gradient(45deg, #0d11cf, #429faf);
+      background-clip: text;
+      color: transparent;
+      font-weight: 500;
+    }
     .account-page {
-      height: 80vh;
       border: 1px solid;
       white-space: nowrap;
       overflow: hidden;
       width: 100%;
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
     .form {
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
       font-size: 1.6rem;
     }
     .img-container {
@@ -101,7 +119,6 @@ import { CommonModule } from '@angular/common';
     }
     fieldset {
       width: 50%;
-      margin-inline: auto;
       padding: 20px;
     }
     input {
@@ -156,7 +173,9 @@ export class AccountComponent implements OnInit {
     this.accountForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
     });
   }
 

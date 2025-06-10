@@ -23,10 +23,13 @@ import { DashboardService } from '../service/dashboard.service';
       height:100%;
     }
     mat-sidenav-content{
-      height: 100%;
       display: flex;
       flex-direction: column;
       margin: 0px;
+      height: 100%;
+    }
+    :host ::ng-deep router-outlet + * {
+      height: 100%;
     }
   `
 })

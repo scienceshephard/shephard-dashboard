@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
   `,
   styles: `
     .settings-page{
-      height: 80vh;
+      height: 100%;
     }
   `
 })
