@@ -21,6 +21,10 @@ import { RouterOutlet } from '@angular/router';
       border-top: 1px solid var(--mat-sys-outline);
       background-color: var(--mat-app-background-color);
     }
+    .mobile-main-content{
+      height: calc(100vh - 50px - 80px);
+      overflow-y: auto;
+    }
   `
 })
 export class MobileMainComponent {

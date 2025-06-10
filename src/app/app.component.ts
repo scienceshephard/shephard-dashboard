@@ -47,6 +47,7 @@ import { ResponsiveService } from './service/responsive-service.service';
       background-color: var(--mat-app-background-color);
       padding-top: 50px;
       padding-bottom: 80px;
+      height: 100vh;
       }
     }
   `

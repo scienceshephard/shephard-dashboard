@@ -94,7 +94,6 @@ import { CommonModule } from '@angular/common';
       font-weight: 500;
     }
     .account-page {
-      border: 1px solid;
       white-space: nowrap;
       overflow: hidden;
       width: 100%;
@@ -108,11 +107,13 @@ import { CommonModule } from '@angular/common';
       justify-content: space-evenly;
       align-items: center;
       font-size: 1.6rem;
+      gap: 20px;
     }
     .img-container {
       width: 300px;
       height: 300px;
       border-radius: 100%;
+      justify-items: center;
       background-image: url('https://www.w3schools.com/howto/img_avatar.png');
       background-size: cover;
       background-position: center;
@@ -144,6 +145,7 @@ import { CommonModule } from '@angular/common';
     marquee {
       background-color: #eee;
       font-weight: 500;
+      font-size: 1.4rem;
       margin-top: auto;
     }
     .link {
@@ -161,6 +163,25 @@ import { CommonModule } from '@angular/common';
       color: white;
       border-radius: 5px;
       cursor: pointer;
+    }
+    @media (max-width: 1519px) {
+      .form{
+        align-items: start;
+      }
+      .user-details{
+        height: 50%;
+      }
+      fieldset{
+        width: 90%;
+      }
+      .img-container{
+        align-self: center;
+      }
+    }
+    @media (max-width: 997px){
+      .img-container{
+        height: 250px;
+      }
     }
   `]
 })
