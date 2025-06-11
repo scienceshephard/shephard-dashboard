@@ -85,7 +85,7 @@ import { CommonModule } from '@angular/common';
       flex-direction: column;
       justify-content: space-evenly;
       align-items: end;
-      height: 100%;
+      height: 50%;
     }
     .user-details label{
       background-image: linear-gradient(45deg, #0d11cf, #429faf);
@@ -105,13 +105,14 @@ import { CommonModule } from '@angular/common';
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;
-      align-items: center;
+      // align-items: center;
       font-size: 1.6rem;
       gap: 20px;
+      height: 100%;
     }
     .img-container {
-      width: 300px;
-      height: 300px;
+      width: min(300px, 25vw);
+      height: min(300px, 20vw);
       border-radius: 100%;
       justify-items: center;
       background-image: url('https://www.w3schools.com/howto/img_avatar.png');
@@ -121,6 +122,7 @@ import { CommonModule } from '@angular/common';
     fieldset {
       width: 50%;
       padding: 20px;
+      align-self: flex-end;
     }
     input {
       outline: none;
@@ -180,7 +182,34 @@ import { CommonModule } from '@angular/common';
     }
     @media (max-width: 997px){
       .img-container{
-        height: 250px;
+        width: min(180px, 30vw);
+        height: min(180px, 30vw);
+        min-width: 100px;
+        min-height: 100px;
+        margin-bottom: 10px;
+      }
+    }
+    @media (max-width: 460px){
+      *{
+        font-size: 14px;
+      }
+      
+      .form{
+        height: 100%;
+        gap: 0;
+        align-items: start;
+      }
+      .user-details{
+        height: fit-content;
+        margin-top: auto;
+        margin-bottom: auto;
+        justify-content: center;
+        gap: 10px;
+      }
+    }
+    @media ( max-width: 226px){
+      .user-details{
+        margin-top: 0px;
       }
     }
   `]
