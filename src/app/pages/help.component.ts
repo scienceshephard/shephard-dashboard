@@ -11,12 +11,13 @@ import { Component } from '@angular/core';
     </div>
   `,
   styles: `
+  
     .help-page{
       height: 100%;
       display: flex;
       justify-content: space-evenly;
       flex-direction: column;
-      background-image: url('/custom.png');
+      background-image: url('/customer.png');
       background-size: contain;
       background-position: right;
       background-repeat: no-repeat;
@@ -40,11 +41,15 @@ import { Component } from '@angular/core';
         background-position: center;
       }
     }
+    @media(max-width:460px){
+      .help-page{
+        justify-content: flex-start;
+        margin-top: 100px;
+        gap: 20px;
+      }
+    }
     @media(max-width: 771px){
       .help-page {
-       background-size: cover;
-       justify-content: flex-end;
-       gap: 20px;
       }
       h1 {
         font-size: 1.5rem;
