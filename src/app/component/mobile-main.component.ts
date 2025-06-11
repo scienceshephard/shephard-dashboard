@@ -22,7 +22,7 @@ import { RouterOutlet } from '@angular/router';
       background-color: var(--mat-app-background-color);
     }
     .mobile-main-content{
-      height: calc(100vh - 50px - 80px);
+      height: calc(100dvh - 50px - 80px);
       overflow-y: auto;
     }
   `

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, computed, effect } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../service/user-service.service';
 
 @Component({
   selector: 'app-account',
@@ -12,9 +13,9 @@ import { CommonModule } from '@angular/common';
       <div class="form">
         <div class="img-container"></div>
         <div class='user-details'>
-          <label>{{ 'Avatar'}}</label>
-          <label>{{ 'Avatar First Name'}}</label>
-          <label>{{ 'Avatar Last Name'}}</label>
+          <label>{{ userService.userDetails()[0] || 'Avatar'}}</label>
+          <label>{{ userService.userDetails()[1] || 'Avatar First Name'}}</label>
+          <label>{{ userService.userDetails()[2] || 'Avatar Last Name'}}</label>
         </div>
         <fieldset>
           <legend>Account Settings</legend>
@@ -220,8 +221,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AccountComponent implements OnInit {
   accountForm!: FormGroup;
-
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, public userService: UserService) {}
 
   ngOnInit(): void {
     this.accountForm = this.fb.group({
@@ -231,7 +231,17 @@ export class AccountComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
     });
+    effect(()=>{
+      const{username, email, firstName, lastName} = this.accountForm.value;
+      this.userService.userDetails.set([username, firstName, lastName]);
+    });
   }
+
+  userDetails = computed(() => [
+    this.accountForm?.value.username,
+    this.accountForm?.value.firstName,
+    this.accountForm?.value.lastName
+  ]);
 
   isInvalid(controlName: string): boolean {
     const control = this.accountForm.get(controlName);
@@ -240,9 +250,10 @@ export class AccountComponent implements OnInit {
 
   onSubmit(): void {
     if (this.accountForm.invalid) {
+      console.log('Form is invalid', this.accountForm.value);
+      
       this.accountForm.markAllAsTouched();
       return;
     }
-    console.log('✅ Form Submitted:', this.accountForm.value);
   }
 }
