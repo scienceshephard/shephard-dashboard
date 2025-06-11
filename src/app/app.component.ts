@@ -43,11 +43,11 @@ import { ResponsiveService } from './service/responsive-service.service';
         display: none;
       }
       app-mobile-main{
-      display: block;
-      background-color: var(--mat-app-background-color);
-      padding-top: 50px;
-      padding-bottom: 80px;
-      height: 100vh;
+        display: block;
+        background-color: var(--mat-app-background-color);
+        padding-top: 50px;
+        padding-bottom: 80px;
+        height: 100dvh;
       }
     }
   `

@@ -13,9 +13,9 @@ import { UserService } from '../service/user-service.service';
       <div class="form">
         <div class="img-container"></div>
         <div class='user-details'>
-          <label>{{ userService.userDetails()[0] || 'Avatar'}}</label>
-          <label>{{ userService.userDetails()[1] || 'Avatar First Name'}}</label>
-          <label>{{ userService.userDetails()[2] || 'Avatar Last Name'}}</label>
+          <label>{{ userService.userDetails()[0] }}</label>
+          <label>{{ userService.userDetails()[1] }}</label>
+          <label>{{ userService.userDetails()[2] }}</label>
         </div>
         <fieldset>
           <legend>Account Settings</legend>
@@ -65,7 +65,7 @@ import { UserService } from '../service/user-service.service';
               />
             </div>
             @if (isInvalid('lastName')) {
-              <p class="error-msg">Password is required.</p>
+              <p class="error-msg">Last Name is required.</p>
             }
 
             <br />
@@ -75,7 +75,7 @@ import { UserService } from '../service/user-service.service';
       </div>
 
       <marquee [scrollAmount]="25" direction="left" behavior="scroll">
-        Here you can manage your account settings and preferences. Feel free to update your profile information and change your password. If you have any issues, please
+        Here you can manage your account settings and preferences. Feel free to update your profile information and change any details about yourself. If you have any issues, please
         <a class="link" [routerLink]="['/help']">click here.</a>
       </marquee>
     </section>
@@ -123,6 +123,7 @@ import { UserService } from '../service/user-service.service';
       width: 50%;
       padding: 20px;
       margin-bottom: 80px;
+      border-style: ridge;
       align-self: flex-end;
     }
     input {
@@ -146,9 +147,9 @@ import { UserService } from '../service/user-service.service';
       border-color: red;
     }
     marquee {
-      background-color: #eee;
       font-weight: 500;
       font-size: 1.4rem;
+      background-color: var(--mat-app-background-color);
       margin-top: auto;
     }
     .link {
@@ -216,6 +217,10 @@ import { UserService } from '../service/user-service.service';
       *{
         font-size: 12px;
       }
+      fieldset{
+        width: 100%;
+        margin-inline: 0;
+      }
     }
   `]
 })
@@ -227,21 +232,10 @@ export class AccountComponent implements OnInit {
     this.accountForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
     });
-    effect(()=>{
-      const{username, email, firstName, lastName} = this.accountForm.value;
-      this.userService.userDetails.set([username, firstName, lastName]);
-    });
   }
-
-  userDetails = computed(() => [
-    this.accountForm?.value.username,
-    this.accountForm?.value.firstName,
-    this.accountForm?.value.lastName
-  ]);
 
   isInvalid(controlName: string): boolean {
     const control = this.accountForm.get(controlName);
@@ -250,10 +244,14 @@ export class AccountComponent implements OnInit {
 
   onSubmit(): void {
     if (this.accountForm.invalid) {
-      console.log('Form is invalid', this.accountForm.value);
-      
       this.accountForm.markAllAsTouched();
       return;
     }
+    
+    // Only update user details when form is valid and submitted
+    const { username, firstName, lastName } = this.accountForm.value;
+    this.userService.userDetails.set([username, firstName, lastName]);
+    
+    console.log('Form submitted successfully', this.accountForm.value);
   }
 }
