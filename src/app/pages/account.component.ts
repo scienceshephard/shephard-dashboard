@@ -105,7 +105,6 @@ import { CommonModule } from '@angular/common';
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;
-      // align-items: center;
       font-size: 1.6rem;
       gap: 20px;
       height: 100%;
@@ -122,6 +121,7 @@ import { CommonModule } from '@angular/common';
     fieldset {
       width: 50%;
       padding: 20px;
+      margin-bottom: 80px;
       align-self: flex-end;
     }
     input {
@@ -169,6 +169,7 @@ import { CommonModule } from '@angular/common';
     @media (max-width: 1519px) {
       .form{
         align-items: start;
+        gap: 0px;
       }
       .user-details{
         height: 50%;
@@ -188,6 +189,9 @@ import { CommonModule } from '@angular/common';
         min-height: 100px;
         margin-bottom: 10px;
       }
+      .form{
+        padding-bottom: 50px;
+      }
     }
     @media (max-width: 460px){
       *{
@@ -196,7 +200,7 @@ import { CommonModule } from '@angular/common';
       
       .form{
         height: 100%;
-        gap: 0;
+        padding-bottom: 50px;
         align-items: start;
       }
       .user-details{
@@ -208,8 +212,8 @@ import { CommonModule } from '@angular/common';
       }
     }
     @media ( max-width: 226px){
-      .user-details{
-        margin-top: 0px;
+      *{
+        font-size: 12px;
       }
     }
   `]
