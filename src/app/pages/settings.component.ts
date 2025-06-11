@@ -6,13 +6,19 @@ import { Component } from '@angular/core';
   imports: [],
   template: `
     <div class="settings-page">
-      <h1>Settings Page</h1>
-      <p>This is the settings page content.</p>
+      <h1>Nothing much here 🙄</h1>
+      <p>Just route to another page. 🤡</p>
     </div>
   `,
   styles: `
     .settings-page{
       height: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: column;
+      font-size:2rem;
+      text-align: center;
     }
   `
 })
