@@ -40,7 +40,6 @@ import { DashboardWidgetComponent } from "../../component/widget/dashboard-widge
       grid-template-columns: 1fr;
       margin: 0;
       gap: 10px;
-      // width: 100%;
     }
   }
     `
