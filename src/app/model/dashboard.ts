@@ -5,3 +5,9 @@ export interface Widget{
     title: string,
     content: Type<unknown>,
 }
+export interface Product{
+    id: number,
+    name: string,
+    popularity: number,
+    sales: number,
+}

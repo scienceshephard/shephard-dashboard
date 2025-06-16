@@ -45,7 +45,7 @@ export class DashboardService {
      },
     {
       id: 6,
-      title: "Top Products",
+      title: "",
       content: HistogramComponent,
      },
     {

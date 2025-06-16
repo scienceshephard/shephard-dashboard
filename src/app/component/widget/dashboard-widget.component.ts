@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Widget } from '../../model/dashboard';
 import { NgComponentOutlet } from '@angular/common';
 
@@ -7,7 +7,7 @@ import { NgComponentOutlet } from '@angular/common';
   standalone: true,
   imports: [NgComponentOutlet],
   template: `
-    <div class="dashboard-container box-shadow"  > 
+    <div class="dashboard-container mat-elevation-z4"  > 
       <div class="header-contaner">
         <h3>{{data().title}}</h3>
       </div>  
@@ -24,9 +24,6 @@ import { NgComponentOutlet } from '@angular/common';
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-    .box-shadow{
-      box-shadow: 0px 4px 8px  rgb(0, 0, 0, 0.2);
     }
     @media (max-width: 590px){
       .dashboard-container{
