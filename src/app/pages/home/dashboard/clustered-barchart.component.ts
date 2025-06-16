@@ -21,7 +21,6 @@ Chart.register(...registerables);
 })
 export class ClusteredBarchartComponent  implements AfterViewInit{
   @ViewChild('clusteredBarChart') clusteredBarChart!: ElementRef<HTMLCanvasElement>;
-
   constructor (private dummyData: DummydataService){}
   ngAfterViewInit() {
     const ctx = this.clusteredBarChart.nativeElement.getContext('2d');

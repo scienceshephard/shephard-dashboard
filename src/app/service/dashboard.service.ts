@@ -50,7 +50,7 @@ export class DashboardService {
      },
     {
       id: 7,
-      title: "Sales by Country",
+      title: "",
       content: MapsComponent,
      },
     {

@@ -43,6 +43,19 @@ $light-theme: mat.m2-define-light-theme((
 }
 body.dark-mode{
   @include mat.all-component-colors($dark-theme);
+  // Leaflet popup dark mode styles
+  .leaflet-popup-content-wrapper {
+    background: #23272f !important;
+    color: #fff !important;
+    border: 1px solid #444 !important;
+  }
+  .leaflet-popup-tip {
+    background: #23272f !important;
+    border: 1px solid #444 !important;
+  }
+  .leaflet-popup-content {
+    color: #fff !important;
+  }
 }
 :root {
   @include mat.all-component-themes($light-theme);
